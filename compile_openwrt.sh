@@ -177,8 +177,6 @@ trans_and_notify () {
     read -t 60 -p "请确认是否解压$name_img ？(y/n) " choice6
     if [[ $choice6 != n ]]; then
         ssh pve "cd ~/img; if [ -f $name_img ]; then rm -f $name_img; fi; gzip -dk $name_img.gz"
-        iyuu_url=https://iyuu.cn/
-        iyuu_token=$IYUU_TOKEN
         title="已成功编译OPENWRT固件"
         end_time=$(date '+%Y-%m-%d %H:%M:%S')
         desp="已成功编译OPENWRT固件\n\n\开始时间：$start_time\n\n结束时间：$end_time"
