@@ -1,0 +1,47 @@
+## 在rsync命令中，已经指定基础路径/etc，以下均为基于该路径后的下一层路径
+
+## /etc下要整个同步的文件夹
++ adblocklist
++ adblocklist/**
++ certs
++ certs/**
++ dropbear
++ dropbear/**
++ nut
++ nut/**
++ openclash
++ openclash/**
++ ssrplus
++ ssrplus/**
+
+## /etc下要同步的文件
++ hosts.mine
++ shadow
+
+## 单独指定/etc/config目录下要同步的部分文件
++ config/
++ config/adbyby
++ config/argon
++ config/ddns
++ config/dhcp
++ config/dropbear
++ config/firewall
++ config/fullconenat
++ config/jd-dailybonus
++ config/koolproxy
++ config/network
++ config/openclash
++ config/passwall
++ config/serverchan
++ config/sfe
++ config/shadowsocksr
++ config/smartdns
++ config/system
++ config/uhttpd
++ config/unblockmusic
++ config/upnpd
++ config/wrtbwmon
++ config/wrtbwmon.user
+
+## 其他文件都不同步
+- *
