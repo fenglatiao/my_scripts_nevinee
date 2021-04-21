@@ -14,8 +14,8 @@ dir_lede_files="$dir_lede/files"
 . $dir_shell/my_config.sh
 
 ## 文件
-file_img_gz=$dir_lede/bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz
 name_img=openwrt-x86-64-generic-squashfs-combined.img
+file_img_gz=$dir_lede/bin/targets/x86/64/$name_img.gz
 
 ## rsync要同步/etc/下的文件清单
 file_rsync_config=$dir_shell/compile_openwrt.list
@@ -123,6 +123,7 @@ update_lede () {
     ./scripts/feeds install -a
 }
 
+## 编译
 make_openwrt () {
     cd $dir_lede
     read -t 60 -p "请输入编译用的核心数：" choice2
@@ -133,7 +134,7 @@ make_openwrt () {
     fi
 }
 
-## 准备以及编译
+## 准备编译
 update_next () {
     cd $dir_lede
     [ ! -d log ] && mkdir log
@@ -157,6 +158,7 @@ update_next () {
     [[ $choice5 == y ]] && make_openwrt
 }
 
+## 编译全过程
 make_all_steps () {
     read -t 60 -p "请确认是否立即开始编译？(y/n) " choice1
     if [[ $choice1 == y ]]; then
@@ -172,6 +174,7 @@ make_all_steps () {
     make_status=$?
 }
 
+## 传输到pve，并发送通知
 trans_and_notify () {
     rsync -e "ssh -p $ssh_pve_port -i $ssh_pve_identity" -lprtv $file_img_gz $ssh_pve_user@$ssh_pve_host:/root/img/
     read -t 60 -p "请确认是否解压$name_img ？(y/n) " choice6
