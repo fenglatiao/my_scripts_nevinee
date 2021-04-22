@@ -36,6 +36,6 @@ jobs:
         with:
           src: github/lxrcbw
           dst: gitee/lxrcbw
-          static_list: "my_scripts"
+          static_list: "my_scripts_nevinee"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
